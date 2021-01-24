@@ -1,0 +1,23 @@
+.container{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 10px;
+    width: 1200px;
+    outline: 1px solid;
+    padding: 10px;
+    margin: 50px auto;
+    min-height: 80vh;
+    background: #5b9bfc;
+}
+.wrapper {
+    background: #3779ff;
+    border-radius: 10px;
+    padding: 10px;
+}
+.navbar{
+    background: #3779ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
