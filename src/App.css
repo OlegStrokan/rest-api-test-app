@@ -1,3 +1,6 @@
+body{
+    color: #e3e3e3
+}
 .container{
     display: grid;
     grid-template-columns: 2fr 10fr;
@@ -17,7 +20,6 @@
 .navbar{
     background: #3779ff;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center;;
     border-radius: 10px;
 }
