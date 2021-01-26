@@ -8,6 +8,7 @@ import MyAlbumsContainer from "./components/MyAlbums/MyAlbumsContainer";
 import MyPhotosContainer from "./components/MyPhotos/MyPhotosContainer";
 import MyTodosContainer from "./components/MyTodos/MyTodosContainer";
 import MyUsersContainer from "./components/MyUsers/MyUsersContainer";
+import Start from "./components/Start/Start";
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
                <Route path={'/photos'} render={() => <MyPhotosContainer/>}/>
                <Route path={'/todos'} render={() => <MyTodosContainer/>}/>
                <Route path={'/users'} render={() => <MyUsersContainer/>}/>
+               <Route exact path={'/'} render={() => <Start/>}/>
+
            </div>
     </div>
 }

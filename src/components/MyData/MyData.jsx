@@ -10,6 +10,7 @@ const MyData = (props) => {
         <NavLink to={'/photos'} className={styles.button}>My Photos</NavLink>
         <NavLink to={'/todos'} className={styles.button}>My Todos</NavLink>
         <NavLink to={'/users'} className={styles.button}>My Users</NavLink>
+        <NavLink to={'/'} className={styles.button}>Back</NavLink>
     </div>
 }
 

@@ -5,38 +5,38 @@ const instance = axios.create({
 })
 
 export const dataAPI = {
-    getPosts(currentPage = 1, pageSize = 10){
-        return instance.get(`posts?page=${currentPage}&count=${pageSize}`)
+    getPosts(){
+        return instance.get(`users/1/posts`)
             .then(response => {
                 return response.data
             })
     },
-    getComments(currentPage = 1, pageSize = 10){
-        return instance.get(`comments?page=${currentPage}&count=${pageSize}`)
+    getComments(){
+        return instance.get(`posts/1/comments`)
             .then(response => {
                 return response.data
             })
     },
-    getAlbums(currentPage = 1, pageSize = 10){
-        return instance.get(`albums?page=${currentPage}&count=${pageSize}`)
+    getAlbums(){
+        return instance.get(`users/1/albums`)
             .then(response => {
                 return response.data
             })
     },
-    getPhotos(currentPage = 1, pageSize = 10){
-        return instance.get(`photos?page=${currentPage}&count=${pageSize}`)
+    getPhotos(){
+        return instance.get(`albums/1/photos`)
             .then(response => {
                 return response.data
             })
     },
-    getTodos(currentPage = 1, pageSize = 10){
-        return instance.get(`todos?page=${currentPage}&count=${pageSize}`)
+    getTodos(){
+        return instance.get(`users/1/todos`)
             .then(response => {
                 return response.data
             })
     },
-    getUsers(currentPage = 1, pageSize = 10){
-        return instance.get(`users?page${currentPage}&count=${pageSize}`)
+    getUsers(){
+        return instance.get(`users`)
             .then(response => {
                 return response.data
             })

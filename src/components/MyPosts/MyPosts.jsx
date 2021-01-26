@@ -1,3 +1,4 @@
+/*
 import React from 'react'
 import styles from './MyPosts.module.css'
 
@@ -30,4 +31,23 @@ const MyPosts = (props) => {
     </div>
 }
 
+export default MyPosts*/
+
+
+import React from 'react'
+import styles from './MyPosts.module.css'
+
+const MyPosts = (props) => {
+    return <div>
+        {props.posts.map(t => <div key={t.id} className={styles.post}>
+            <h3>Post from user: {t.userId}</h3>
+            <div><span className={styles.bold}>Posts_Id:</span> {t.id}</div>
+            <div><span className={styles.bold}>Title:</span> {t.title}</div>
+            <div><span className={styles.bold}>Body:</span> {t.body}</div>
+        </div>)}
+    </div>
+}
+
 export default MyPosts
+
+

@@ -1,10 +1,24 @@
 import React from 'react'
 import MyTodos from "./MyTodos";
+import {connect} from "react-redux";
+import {getTodos} from "../../redux/todos-reducers"
 
 class MyTodosContainer extends React.Component {
-    render(){
-        return <MyTodos/>
+    componentDidMount() {
+        this.props.getTodos()
+    }
+
+
+    render() {
+        return <MyTodos todos={this.props.todos}/>
     }
 }
 
-export default MyTodosContainer
+
+let mapStateToProps = (state) => ({
+    todos: state.todosPage.todos,
+
+})
+
+
+export default connect(mapStateToProps,{getTodos})(MyTodosContainer)

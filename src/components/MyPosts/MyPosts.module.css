@@ -35,3 +35,24 @@
     background: #3779ff;
     border-radius: 5px;
 }
+.a{
+    text-decoration: none;
+    color: #ffbbbb;
+}
+.addItem{
+    padding: 20px;
+    background: #184ce7;
+    margin: 10px;
+    border-radius: 10px;
+}
+.addItem *{
+    margin: 5px;
+}
+.button{
+    color: #fff;
+    border: none;
+    background: #3779ff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+}
