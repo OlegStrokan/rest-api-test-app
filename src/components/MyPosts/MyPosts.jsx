@@ -36,61 +36,50 @@ export default MyPosts*/
 
 import React from 'react'
 import styles from './MyPosts.module.css'
-import Post from "./Post/Post";
+
 
 const MyPosts = (props) => {
-
     const newPostId = React.createRef()
     const newPostTitle = React.createRef()
     const newPostBody = React.createRef()
 
+
     const onAddPost = () => {
-        debugger
-        props.addPost()
-    }
-
-    let onPostId = () => {
-        let posts_id = newPostId.current.value
-        props.updateNewPostText(posts_id)
-    }
-
-    let onPostTitle = () => {
+        let id = newPostId.current.value
         let title = newPostTitle.current.value
-        props.updateNewPostText(title)
-    }
-
-    let onPostBody = () => {
         let body = newPostBody.current.value
-        props.updateNewPostText(body)
+        props.addPost({id, title, body})
+        props.sendPost({id, title, body})
+        newPostId.current.value = ''
+        newPostTitle.current.value = ''
+        newPostBody.current.value = ''
     }
-
 
     return <div>
         <div className={styles.addItem}>
-            <div>Add post's Id<input onChange={onPostId}
+            <div>Add post's Id:<input
                            ref={newPostId}
-                           value={props.newPostText}
+                           value={props.newText}
            /></div>
-            <div>Add post's Title<input onChange={onPostTitle}
+            <div>Add post's Title:<input
                            ref={newPostTitle}
-                           value={props.newPostText}
+                           value={props.newText}
            /></div>
-            <div>Add post's Body<input onChange={onPostBody}
+            <div>Add post's Body:<input
                            ref={newPostBody}
-                           value={props.newPostText}
+                           value={props.newText}
            /></div>
             <button className={styles.button} onClick={onAddPost}>Add Post</button>
         </div>
 
-            <h1>My posts</h1>
+            <h1>Posts</h1>
 
         {props.posts.map(t => <div key={t.id} className={styles.post}>
-            <h3>Post from user: {t.userId}</h3>
+            <h3> {t.userId == 1 ? 'Post from user: 1' : 'My Post'}</h3>
             <div><span className={styles.bold}>Posts_Id:</span> {t.id}</div>
             <div><span className={styles.bold}>Title:</span> {t.title}</div>
             <div><span className={styles.bold}>Body:</span> {t.body}</div>
         </div>)}
-
     </div>
 }
 

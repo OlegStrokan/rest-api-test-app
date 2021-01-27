@@ -1,7 +1,10 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'https://jsonplaceholder.typicode.com/'
+    baseURL: 'https://jsonplaceholder.typicode.com/',
+    headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+    }
 })
 
 export const dataAPI = {
@@ -41,4 +44,25 @@ export const dataAPI = {
                 return response.data
             })
     }
+}
+export const myDataAPI={
+    sendPost(post){
+        return instance.post(`users/1/posts`,{post})
+    },
+    sendComment(comment){
+        return instance.post(`posts/1/comments`,{comment})
+    },
+    sendAlums(albums){
+        return instance.post(`users/1/albums`,{albums})
+    },
+    sendPhotos(photo){
+        return instance.post(`users/1/photos`,{photo})
+    },
+    sendTodos(todo){
+        return instance.post(`users/1/todos`,{todo})
+    },
+    sendUser(user){
+        return instance.post(`users`,{user})
+    },
+
 }

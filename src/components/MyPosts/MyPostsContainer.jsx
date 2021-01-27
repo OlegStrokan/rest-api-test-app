@@ -1,30 +1,30 @@
 import React from 'react'
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
-import {addPost, getPosts, updateNewPostText} from "../../redux/posts-reducer";
+import {addPost, getPosts, sendPost} from "../../redux/posts-reducer";
 
 class MyPostsContainer extends React.Component {
     componentDidMount() {
         this.props.getPosts()
     }
 
-
     render() {
         return <MyPosts posts={this.props.posts}
                         addPost={this.props.addPost}
-                        updateNewPostText={this.props.updateNewPostText}/>
+                        sendPost={this.props.sendPost}
+        />
     }
 }
 
 
 let mapStateToProps = (state) => ({
     posts: state.postsPage.posts,
-    post_from_user: state.postsPage.post_from_user,
-    post_id: state.postsPage.post_id,
+    userId: state.postsPage.userId,
+    id: state.postsPage.id,
     title: state.postsPage.title,
     body: state.postsPage.body,
-    newPostText: state.postsPage.newPostText
+    newText: state.postsPage.newText
 })
 
 
-export default connect(mapStateToProps,{getPosts, addPost, updateNewPostText})(MyPostsContainer)
+export default connect(mapStateToProps,{getPosts, addPost, sendPost})(MyPostsContainer)
