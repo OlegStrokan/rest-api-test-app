@@ -19,7 +19,7 @@ class MyPostsContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     posts: state.postsPage.posts,
-    userId: state.postsPage.userId,
+    postId: state.postsPage.postId,
     id: state.postsPage.id,
     title: state.postsPage.title,
     body: state.postsPage.body,

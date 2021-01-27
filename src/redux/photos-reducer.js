@@ -5,7 +5,7 @@ const ADD_PHOTOS = 'ADD_PHOTOS';
 
 let initialState = {
     photos: [],
-    userId: null,
+    albumId: null,
     id: null,
     thumbnailUrl: null,
     title: null,
@@ -20,7 +20,7 @@ const photosReducer = (state = initialState, action) => {
         }
         case ADD_PHOTOS: {
             let newPhoto = {
-                userId: 2,
+                albumId: 2,
                 id: action.id,
                 thumbnailUrl: action.thumbnailUrl,
                 title: action.title,

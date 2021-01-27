@@ -5,7 +5,7 @@ const ADD_COMMENT = 'ADD_COMMENT';
 
 let initialState = {
     comments: [],
-    userId: null,
+    postId: null,
     id: null,
     name: null,
     email: null,
@@ -20,10 +20,10 @@ const commentsReducer = (state = initialState, action) => {
         }
         case ADD_COMMENT: {
             let newComment = {
-                userId: 2,
+                postId: 2,
                 id: action.id,
                 name: action.name,
-                email: action.name,
+                email: action.email,
                 body: action.body
             }
             let stateCopy = {

@@ -63,6 +63,5 @@ export const myDataAPI={
     },
     sendUser(user){
         return instance.post(`users`,{user})
-    },
-
+    }
 }

@@ -2,15 +2,61 @@ import React from 'react'
 import styles from "../MyPosts/MyPosts.module.css";
 
 const MyUsers = (props) => {
+
+    const newUserName = React.createRef()
+    const newUserUsername = React.createRef()
+    const newUserEmail = React.createRef()
+    const newUserPhone = React.createRef()
+    const newUserWebsite = React.createRef()
+
+    let company = {}
+    const onAddUser = () => {
+        let name = newUserName.current.value
+        let username = newUserUsername.current.value
+        let email = newUserEmail.current.value
+        let phone = newUserPhone.current.value
+        let website = newUserWebsite.current.value
+        props.addUser({name, username, email, phone, website})
+        props.sendUser({name, username, email , phone, website})
+        newUserName.current.value = ''
+        newUserUsername.current.value = ''
+        newUserEmail.current.value = ''
+        newUserPhone.current.value = ''
+        newUserWebsite.current.value = ''
+    }
+
     return <div>
+        <div className={styles.addItem}>
+            <div>Name: <input
+                ref={newUserName}
+                value={props.newText}
+            /></div>
+            <div>User_name: <input
+                ref={newUserUsername}
+                value={props.newText}
+            /></div>
+            <div>Email: <input
+                ref={newUserEmail}
+                value={props.newText}
+            /></div>
+            <div>Phone: <input
+                ref={newUserPhone}
+                value={props.newText}
+            /></div>
+            <div>Website: <input
+                ref={newUserWebsite}
+                value={props.newText}
+            /></div>
+            <button className={styles.button} onClick={onAddUser}>Add User</button>
+        </div>
+
+        <h1>Users</h1>
         {props.users.map(t => <div key={t.id} className={styles.post}>
             <h3>Name: {t.name}</h3>
             <div><span className={styles.bold}>User_name: </span> {t.username}</div>
             <div><span className={styles.bold}>Email: </span> {t.email}</div>
-            <div><span className={styles.bold}>Address: </span> {`${t.address.street}, ${t.address.city}`}</div>
             <div><span className={styles.bold}>Phone: </span> {t.phone}</div>
             <div><span className={styles.bold}><a className={styles.a} href={t.website}>{t.website}</a></span></div>
-            <div><span className={styles.bold}>Company: </span> {t.company.name}</div>
         </div>)}
     </div>
 }

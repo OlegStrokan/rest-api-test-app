@@ -46,6 +46,7 @@ export const getTodos = () => {
         })
     }
 }
+
 export const sendTodo = (todo) => {
     return (dispatch) => {
         myDataAPI.sendTodo(todo).then(response => console.log(response))

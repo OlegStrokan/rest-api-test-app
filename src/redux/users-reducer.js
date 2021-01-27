@@ -21,7 +21,9 @@ const usersReducer = (state = initialState, action) => {
             return {...state, users: action.users}
         }
         case ADD_USER: {
+            debugger
             let newUser = {
+                userId: 2,
                 name: action.name,
                 username: action.username,
                 email: action.email,
