@@ -52,13 +52,13 @@ export const myDataAPI={
     sendComment(comment){
         return instance.post(`posts/1/comments`,{comment})
     },
-    sendAlums(albums){
-        return instance.post(`users/1/albums`,{albums})
+    sendAlbum(album){
+        return instance.post(`users/1/albums`,{album})
     },
-    sendPhotos(photo){
+    sendPhoto(photo){
         return instance.post(`users/1/photos`,{photo})
     },
-    sendTodos(todo){
+    sendTodo(todo){
         return instance.post(`users/1/todos`,{todo})
     },
     sendUser(user){
