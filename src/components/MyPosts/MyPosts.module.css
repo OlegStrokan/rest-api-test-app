@@ -45,7 +45,7 @@
     margin: 10px;
     border-radius: 10px;
 }
-.addItem *{
+.addItem * {
     margin: 5px;
 }
 .button{
@@ -55,4 +55,11 @@
     padding: 10px 20px;
     font-size: 18px;
     border-radius: 10px;
+}
+.input{
+    padding: 4px;
+    font-size: 16px;
+}
+.subInput{
+    font-size: 18px
 }

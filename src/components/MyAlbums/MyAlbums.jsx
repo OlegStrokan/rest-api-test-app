@@ -16,11 +16,11 @@ const MyAlbums = (props) => {
    }
        return <div>
        <div className={styles.addItem}>
-           <div>Add album's Id:<input
+           <div className={styles.subInput}>Id:<input className={styles.input}
                ref={newAlbumId}
                value={props.newText}
            /></div>
-           <div>Add album's Title:<input
+           <div className={styles.subInput}>Title:<input className={styles.input}
                ref={newAlbumTitle}
                value={props.newText}
            /></div>

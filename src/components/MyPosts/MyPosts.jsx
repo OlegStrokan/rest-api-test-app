@@ -57,15 +57,15 @@ const MyPosts = (props) => {
 
     return <div>
         <div className={styles.addItem}>
-            <div>Add post's Id:<input
+            <div className={styles.subInput}>Id:<input className={styles.input}
                            ref={newPostId}
                            value={props.newText}
            /></div>
-            <div>Add post's Title:<input
+            <div className={styles.subInput}>Title:<input className={styles.input}
                            ref={newPostTitle}
                            value={props.newText}
            /></div>
-            <div>Add post's Body:<input
+            <div className={styles.subInput}>Body:<input className={styles.input}
                            ref={newPostBody}
                            value={props.newText}
            /></div>

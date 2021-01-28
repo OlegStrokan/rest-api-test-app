@@ -23,19 +23,19 @@ const MyPhotos = (props) => {
     }
      return <div>
          <div className={styles.addItem}>
-             <div>Id:<input
+             <div className={styles.subInput}>Id:<input className={styles.input}
                  ref={newPhotoId}
                  value={props.newText}
              /></div>
-             <div>Title:<input
+             <div className={styles.subInput}>Title:<input className={styles.input}
                  ref={newPhotoTitle}
                  value={props.newText}
              /></div>
-             <div>Link for discussion:<input
+             <div className={styles.subInput}>Link for discussion:<input className={styles.input}
                  ref={newPhotoJobLink}
                  value={props.newText}
              /></div>
-             <div>Link for job:<input
+             <div className={styles.subInput}>Link for job:<input className={styles.input}
                  ref={newPhotoDiscussionLink}
                  value={props.newText}
              /></div>

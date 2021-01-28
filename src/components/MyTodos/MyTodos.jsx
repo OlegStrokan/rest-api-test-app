@@ -20,15 +20,15 @@ const MyTodos = (props) => {
 
     return <div>
         <div className={styles.addItem}>
-            <div>Id:<input
+            <div className={styles.subInput}>Id:<input className={styles.input}
                 ref={newTodoId}
                 value={props.newText}
             /></div>
-            <div>Title:<input
+            <div className={styles.subInput}>Title:<input className={styles.input}
                 ref={newTodoTitle}
                 value={props.newText}
             /></div>
-            <div>Completed (0 or 1):<input
+            <div className={styles.subInput}>Completed (0 or 1):<input className={styles.input}
                 ref={newTodoCompleted}
                 value={props.newText}
             /></div>

@@ -9,7 +9,6 @@ const MyUsers = (props) => {
     const newUserPhone = React.createRef()
     const newUserWebsite = React.createRef()
 
-    let company = {}
     const onAddUser = () => {
         let name = newUserName.current.value
         let username = newUserUsername.current.value
@@ -27,23 +26,23 @@ const MyUsers = (props) => {
 
     return <div>
         <div className={styles.addItem}>
-            <div>Name: <input
+            <div className={styles.subInput}>Name: <input className={styles.input}
                 ref={newUserName}
                 value={props.newText}
             /></div>
-            <div>User_name: <input
+            <div className={styles.subInput}>User_name: <input className={styles.input}
                 ref={newUserUsername}
                 value={props.newText}
             /></div>
-            <div>Email: <input
+            <div className={styles.subInput}>Email: <input className={styles.input}
                 ref={newUserEmail}
                 value={props.newText}
             /></div>
-            <div>Phone: <input
+            <div className={styles.subInput}>Phone: <input className={styles.input}
                 ref={newUserPhone}
                 value={props.newText}
             /></div>
-            <div>Website: <input
+            <div className={styles.subInput}>Website: <input className={styles.input}
                 ref={newUserWebsite}
                 value={props.newText}
             /></div>

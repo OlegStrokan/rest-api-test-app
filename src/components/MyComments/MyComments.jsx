@@ -22,19 +22,19 @@ const MyComments = (props) => {
 
     return <div>
             <div className={styles.addItem}>
-                <div>Add comment's Id:<input
+                <div className={styles.subInput}>Id:<input className={styles.input}
                     ref={newCommentId}
                     value={props.newText}
                 /></div>
-                <div>Add comment's Name:<input
+                <div className={styles.subInput}>Name:<input className={styles.input}
                     ref={newCommentName}
                     value={props.newText}
                 /></div>
-                <div>Add comment's Email:<input
+                <div className={styles.subInput}>Email:<input className={styles.input}
                     ref={newCommentEmail}
                     value={props.newText}
                 /></div>
-                <div>Add comment's Body:<input
+                <div className={styles.subInput}>Body:<input className={styles.input}
                     ref={newCommentBody}
                     value={props.newText}
                 /></div>
