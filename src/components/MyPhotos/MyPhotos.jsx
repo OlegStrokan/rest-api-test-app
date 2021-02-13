@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "../MyPosts/MyPosts.module.css";
+import Preloader from "../common/Preloader/Preloader";
 
 const MyPhotos = (props) => {
 
@@ -44,6 +45,7 @@ const MyPhotos = (props) => {
          </div>
 
          <h1>Photos</h1>
+         {props.isFetching ? <Preloader/> : null}
         {props.photos.map(t => <div key={t.id} className={styles.comment}>
             <h3> {t.albumId == 1 ? 'Photo from user: 1' : 'My Photo'}</h3>
             <div><span className={styles.bold}>Album_Id: </span> {t.id}</div>

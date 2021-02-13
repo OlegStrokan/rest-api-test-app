@@ -11,6 +11,7 @@ class MyCommentsContainer extends React.Component {
         return <MyComments comments={this.props.comments}
                            addComment={this.props.addComment}
                            sendComment={this.props.sendComment}
+                           isFetching={this.props.isFetching}
         />
     }
 }
@@ -18,11 +19,7 @@ class MyCommentsContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     comments: state.commentsPage.comments,
-    userId: state.commentsPage.userId,
-    id: state.commentsPage.id,
-    name: state.commentsPage.name,
-    email: state.commentsPage.email,
-    newText: state.commentsPage.newText,
+    isFetching: state.commentsPage.isFetching
 })
 
 

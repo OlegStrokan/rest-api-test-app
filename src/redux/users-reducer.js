@@ -1,7 +1,8 @@
 import {dataAPI, myDataAPI} from "../api/api";
 
 const SET_USERS = 'SET_USERS'
-const ADD_USER = 'ADD_USER';
+const ADD_USER = 'ADD_USER'
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
 let initialState = {
     users: [],
@@ -13,6 +14,7 @@ let initialState = {
     phone: null,
     website: null,
     company: null,
+    isFetching: true
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -38,6 +40,8 @@ const usersReducer = (state = initialState, action) => {
             }
             return stateCopy
         }
+        case TOGGLE_IS_FETCHING:
+            return { ...state, isFetching: action.isFetching}
         default: return state
     }
 }
@@ -45,10 +49,13 @@ const usersReducer = (state = initialState, action) => {
 export const setUsers = (users) => ({type: SET_USERS, users})
 export const addUser = ({name, username, email, address, phone, website, company}) =>
     ({type: ADD_USER, name, username, email, address, phone, website, company})
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
 export const getUsers = () => {
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         dataAPI.getUsers().then(response => {
+            dispatch(toggleIsFetching(false))
             dispatch(setUsers(response))
         })
     }

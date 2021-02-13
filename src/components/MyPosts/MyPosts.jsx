@@ -36,6 +36,7 @@ export default MyPosts*/
 
 import React from 'react'
 import styles from './MyPosts.module.css'
+import Preloader from "../common/Preloader/Preloader";
 
 
 const MyPosts = (props) => {
@@ -73,7 +74,7 @@ const MyPosts = (props) => {
         </div>
 
             <h1>Posts</h1>
-
+        {props.isFetching ? <Preloader/> : null}
         {props.posts.map(t => <div key={t.id} className={styles.post}>
             <h3> {t.userId == 1 ? 'Post from user: 1' : 'My Post'}</h3>
             <div><span className={styles.bold}>Posts_Id:</span> {t.id}</div>

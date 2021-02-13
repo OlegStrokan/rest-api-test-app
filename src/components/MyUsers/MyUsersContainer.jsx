@@ -18,14 +18,6 @@ class MyUsersContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     users: state.usersPage.users,
-    userId: state.usersPage.userId,
-    name: state.usersPage.name,
-    username: state.usersPage.username,
-    email: state.usersPage.email,
-    address: state.usersPage.address,
-    phone: state.usersPage.phone,
-    website: state.usersPage.website,
-    company: state.usersPage.company,
 })
 
 

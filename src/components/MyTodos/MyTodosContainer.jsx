@@ -3,6 +3,7 @@ import MyTodos from "./MyTodos";
 import {connect} from "react-redux";
 import {getTodos, addTodo, sendTodo} from "../../redux/todos-reducers"
 
+
 class MyTodosContainer extends React.Component {
     componentDidMount() {
         this.props.getTodos()
@@ -12,6 +13,7 @@ class MyTodosContainer extends React.Component {
         return <MyTodos todos={this.props.todos}
                         addTodo={this.props.addTodo}
                         sendTodo={this.props.sendTodo}
+                        isFetching={this.props.isFetching}
         />
     }
 }
@@ -19,11 +21,7 @@ class MyTodosContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     todos: state.todosPage.todos,
-    postId: state.postsPage.postId,
-    id: state.postsPage.id,
-    title: state.postsPage.title,
-    completed: state.postsPage.completed,
-    newText: state.postsPage.newText
+    isFetching: state.todosPage.isFetching
 })
 
 

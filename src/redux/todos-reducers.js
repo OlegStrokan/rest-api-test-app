@@ -1,7 +1,8 @@
 import {dataAPI, myDataAPI} from "../api/api";
 
 const SET_TODOS = 'SET_TODOS'
-const ADD_TODO = 'ADD_TODO';
+const ADD_TODO = 'ADD_TODO'
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
 let initialState = {
     todos: [],
@@ -10,7 +11,8 @@ let initialState = {
     completed: null,
     title: null,
     url: null,
-    newText: ''
+    newText: '',
+    isFetching: true
 }
 
 const todosReducer = (state = initialState, action) => {
@@ -32,16 +34,21 @@ const todosReducer = (state = initialState, action) => {
             }
             return stateCopy
         }
+        case TOGGLE_IS_FETCHING:
+            return { ...state, isFetching: action.isFetching}
         default: return state
     }
 }
 
 export const setTodos = (todos) => ({type: SET_TODOS, todos})
 export const addTodo = ({id, completed, title}) => ({type: ADD_TODO, id, completed, title})
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
 export const getTodos = () => {
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         dataAPI.getTodos().then(response => {
+            dispatch(toggleIsFetching(false))
             dispatch(setTodos(response))
         })
     }

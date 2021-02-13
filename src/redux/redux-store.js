@@ -5,7 +5,8 @@ import postsReducer from "./posts-reducer";
 import commentsReducer from "./comments-reducer";
 import photosReducer from "./photos-reducer";
 import todosReducer from "./todos-reducers";
-import usersReducers from "./users-reducer";
+import usersReducer from "./users-reducer";
+import loginReducer from "./logins-reducer";
 
 let reducers = combineReducers({
     postsPage: postsReducer,
@@ -13,7 +14,8 @@ let reducers = combineReducers({
     commentsPage: commentsReducer,
     photosPage: photosReducer,
     todosPage: todosReducer,
-    usersPage: usersReducers
+    usersPage: usersReducer,
+    loginPage: loginReducer
 
 })
 

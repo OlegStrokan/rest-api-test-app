@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "../MyPosts/MyPosts.module.css";
+import Preloader from "../common/Preloader/Preloader";
 
 const MyComments = (props) => {
     const newCommentId = React.createRef()
@@ -42,6 +43,7 @@ const MyComments = (props) => {
             </div>
 
             <h1>Comments</h1>
+        {props.isFetching ? <Preloader/> : null}
             {props.comments.map(t => <div key={t.id} className={styles.comment}>
                 <h3> {t.postId == 1 ? 'Comment from user: 1' : 'My Comment'}</h3>
                 <div><span className={styles.bold}>Comment_Id: </span> {t.id}</div>

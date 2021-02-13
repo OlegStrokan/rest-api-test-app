@@ -1,10 +1,11 @@
 import React from 'react'
 import styles from "../MyPosts/MyPosts.module.css";
+import Preloader from "../common/Preloader/Preloader";
 
 const MyAlbums = (props) => {
+
        const newAlbumId = React.createRef()
        const newAlbumTitle = React.createRef()
-
 
        const onAddAlbum = () => {
        let id = newAlbumId.current.value
@@ -14,6 +15,7 @@ const MyAlbums = (props) => {
        newAlbumId.current.value = ''
        newAlbumTitle.current.value = ''
    }
+
        return <div>
        <div className={styles.addItem}>
            <div className={styles.subInput}>Id:<input className={styles.input}
@@ -26,8 +28,8 @@ const MyAlbums = (props) => {
            /></div>
            <button className={styles.button} onClick={onAddAlbum}>Add Album</button>
        </div>
-
        <h1>Albums</h1>
+           {props.isFetching ? <Preloader/> : null}
         {props.albums.map(t => <div key={t.id} className={styles.comment}>
             <h3> {t.userId == 1 ? 'Album from user: 1' : 'My Album'}</h3>
             <div><span className={styles.bold}>Comment_Id: </span> {t.id}</div>

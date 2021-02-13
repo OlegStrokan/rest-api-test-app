@@ -12,6 +12,7 @@ class MyPostsContainer extends React.Component {
         return <MyPosts posts={this.props.posts}
                         addPost={this.props.addPost}
                         sendPost={this.props.sendPost}
+                        isFetching={this.props.isFetching}
         />
     }
 }
@@ -19,11 +20,7 @@ class MyPostsContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     posts: state.postsPage.posts,
-    postId: state.postsPage.postId,
-    id: state.postsPage.id,
-    title: state.postsPage.title,
-    body: state.postsPage.body,
-    newText: state.postsPage.newText
+    isFetching: state.postsPage.isFetching
 })
 
 

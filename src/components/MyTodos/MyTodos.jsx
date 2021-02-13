@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "../MyPosts/MyPosts.module.css";
+import Preloader from "../common/Preloader/Preloader";
 
 const MyTodos = (props) => {
     const newTodoId = React.createRef()
@@ -36,6 +37,7 @@ const MyTodos = (props) => {
         </div>
 
         <h1>My Todos</h1>
+        {props.isFetching ? <Preloader/> : null}
         {props.todos.map(t => <div key={t.id} className={styles.post}>
             <h3> {t.userId == 1 ? 'Todo from user: 1' : 'My Todo'}</h3>
             <div><span className={styles.bold}>Todos_id:</span> {t.id}</div>
