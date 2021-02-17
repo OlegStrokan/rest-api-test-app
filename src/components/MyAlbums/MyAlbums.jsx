@@ -1,32 +1,27 @@
 import React from 'react'
 import styles from "../MyPosts/MyPosts.module.css";
 import Preloader from "../common/Preloader/Preloader";
+import {Field, reduxForm} from "redux-form";
+
+let AddAlbumsForm = (props) => {
+    return <form onSubmit={props.handleSubmit}>
+        <div className={styles.subInput}>Id:<Field  className={styles.input} name='Albums_Id' component="input"/></div>
+        <div className={styles.subInput}>Title:<Field  className={styles.input} name='Title' component="input"/></div>
+        <button className={styles.button}>Add Albums</button>
+    </form>
+}
+
+AddAlbumsForm = reduxForm({form: 'AddPost'})(AddAlbumsForm)
 
 const MyAlbums = (props) => {
 
-       const newAlbumId = React.createRef()
-       const newAlbumTitle = React.createRef()
-
-       const onAddAlbum = () => {
-       let id = newAlbumId.current.value
-       let title = newAlbumTitle.current.value
-       props.addAlbum({id, title})
-       props.sendAlbum({id, title})
-       newAlbumId.current.value = ''
-       newAlbumTitle.current.value = ''
-   }
-
+    const onSubmit = (values) => {
+        props.addAlbum({id: values.Albums_Id, title: values.Title})
+        props.sendAlbum({id: values.Albums_Id, title: values.Title})
+    }
        return <div>
        <div className={styles.addItem}>
-           <div className={styles.subInput}>Id:<input className={styles.input}
-               ref={newAlbumId}
-               value={props.newText}
-           /></div>
-           <div className={styles.subInput}>Title:<input className={styles.input}
-               ref={newAlbumTitle}
-               value={props.newText}
-           /></div>
-           <button className={styles.button} onClick={onAddAlbum}>Add Album</button>
+         <AddAlbumsForm onSubmit={onSubmit}/>
        </div>
        <h1>Albums</h1>
            {props.isFetching ? <Preloader/> : null}

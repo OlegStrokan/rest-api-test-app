@@ -23,5 +23,12 @@ let mapStateToProps = (state) => ({
     isFetching: state.postsPage.isFetching
 })
 
+/*let mapDispatchToProps = (dispatch) => {
+    return {
+        addPost: ({id, title, body}) => {
+            dispatch(addPost(id,title, body))
+        }
+    }
+ */
 
 export default connect(mapStateToProps,{getPosts, addPost, sendPost})(MyPostsContainer)

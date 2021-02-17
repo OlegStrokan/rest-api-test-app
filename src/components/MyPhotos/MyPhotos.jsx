@@ -1,49 +1,38 @@
 import React from 'react'
 import styles from "../MyPosts/MyPosts.module.css";
 import Preloader from "../common/Preloader/Preloader";
+import {Field, reduxForm} from "redux-form";
+
+let MyPhotosForm = (props) => {
+    return <form onSubmit={props.handleSubmit}>
+        <div className={styles.subInput}>Id:
+            <Field className={styles.input} name='Album_id' component='input'/></div>
+        <div className={styles.subInput}>Title:
+            <Field className={styles.input} name='Title' component='input'/></div>
+        <div className={styles.subInput}>Link for job:
+            <Field className={styles.input} name='Link_for_job' component='input'/></div>
+        <div className={styles.subInput}>Link for discussion:
+            <Field className={styles.input} name='Link_for_discussion' component='input'
+        /></div>
+        <button className={styles.button}>Add Photo</button>
+    </form>
+}
+
+MyPhotosForm = reduxForm({form: 'AddPhoto'})(MyPhotosForm)
 
 const MyPhotos = (props) => {
 
-    const newPhotoId = React.createRef()
-    const newPhotoTitle = React.createRef()
-    const newPhotoJobLink = React.createRef()
-    const newPhotoDiscussionLink = React.createRef()
-
-
-    const onAddPhoto = () => {
-        let id = newPhotoId.current.value
-        let title = newPhotoTitle.current.value
-        let url = newPhotoJobLink.current.value
-        let thumbnailUrl = newPhotoDiscussionLink.current.value
-        props.addPhoto({id, thumbnailUrl, title, url})
-        props.sendPhoto({id, thumbnailUrl, title, url})
-        newPhotoId.current.value = ''
-        newPhotoTitle.current.value = ''
-        newPhotoJobLink.current.value = ''
-        newPhotoDiscussionLink.current.value = ''
+    let onSubmit = (values) => {
+        props.addPhoto({id: values.Album_id, thumbnailUrl: values.Link_for_discussion,
+                        title: values.Title, url: values.Link_for_job})
+        props.sendPhoto({id: values.Album_id, thumbnailUrl: values.Link_for_discussion,
+            title: values.Title, url: values.Link_for_job})
     }
+
      return <div>
          <div className={styles.addItem}>
-             <div className={styles.subInput}>Id:<input className={styles.input}
-                 ref={newPhotoId}
-                 value={props.newText}
-             /></div>
-             <div className={styles.subInput}>Title:<input className={styles.input}
-                 ref={newPhotoTitle}
-                 value={props.newText}
-             /></div>
-             <div className={styles.subInput}>Link for discussion:<input className={styles.input}
-                 ref={newPhotoJobLink}
-                 value={props.newText}
-             /></div>
-             <div className={styles.subInput}>Link for job:<input className={styles.input}
-                 ref={newPhotoDiscussionLink}
-                 value={props.newText}
-             /></div>
-             
-             <button className={styles.button} onClick={onAddPhoto}>Add Photo</button>
+             <MyPhotosForm onSubmit={onSubmit}/>
          </div>
-
          <h1>Photos</h1>
          {props.isFetching ? <Preloader/> : null}
         {props.photos.map(t => <div key={t.id} className={styles.comment}>

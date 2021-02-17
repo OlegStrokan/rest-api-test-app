@@ -7,6 +7,7 @@ import photosReducer from "./photos-reducer";
 import todosReducer from "./todos-reducers";
 import usersReducer from "./users-reducer";
 import loginReducer from "./logins-reducer";
+import {reducer as formReducer} from "redux-form"
 
 let reducers = combineReducers({
     postsPage: postsReducer,
@@ -15,7 +16,8 @@ let reducers = combineReducers({
     photosPage: photosReducer,
     todosPage: todosReducer,
     usersPage: usersReducer,
-    loginPage: loginReducer
+    loginPage: loginReducer,
+    form: formReducer
 
 })
 

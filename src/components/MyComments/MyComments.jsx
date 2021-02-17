@@ -1,47 +1,30 @@
 import React from 'react'
 import styles from "../MyPosts/MyPosts.module.css";
 import Preloader from "../common/Preloader/Preloader";
+import {Field, reduxForm} from "redux-form";
+
+let AddCommentForm = (props) => {
+    return <form onSubmit={props.handleSubmit}>
+        <div className={styles.subInput}>Id:<Field  className={styles.input} name='Comment_id' component="input"/></div>
+        <div className={styles.subInput}>Name:<Field  className={styles.input} name='Name' component="input"/></div>
+        <div className={styles.subInput}>Email: <Field  className={styles.input} name='Email' component="input"/></div>
+        <div className={styles.subInput}>Body: <Field  className={styles.input} name='Body' component="input"/></div>
+        <button className={styles.button}>Add Post</button>
+    </form>
+}
+
+AddCommentForm = reduxForm({form: 'AddComment'})(AddCommentForm)
 
 const MyComments = (props) => {
-    const newCommentId = React.createRef()
-    const newCommentName = React.createRef()
-    const newCommentEmail = React.createRef()
-    const newCommentBody = React.createRef()
-    
-    const onAddComment = () => {
-        let id = newCommentId.current.value
-        let name = newCommentName.current.value
-        let email = newCommentEmail.current.value
-        let body = newCommentBody.current.value
-        props.addComment({id, name, email, body})
-        props.sendComment({id, name, email, body})
-        newCommentId.current.value = ''
-        newCommentName.current.value = ''
-        newCommentEmail.current.value = ''
-        newCommentBody.current.value = ''
+
+    const onSubmit = (values) => {
+        props.addComment({id: values.Comment_id, name: values.Name, email: values.Email, body: values.Body})
+        props.sendComment({id: values.Comment_id, name: values.Name, email: values.Email, body: values.Body})
     }
 
     return <div>
             <div className={styles.addItem}>
-                <div className={styles.subInput}>Id:<input className={styles.input}
-                    ref={newCommentId}
-                    value={props.newText}
-                /></div>
-                <div className={styles.subInput}>Name:<input className={styles.input}
-                    ref={newCommentName}
-                    value={props.newText}
-                /></div>
-                <div className={styles.subInput}>Email:<input className={styles.input}
-                    ref={newCommentEmail}
-                    value={props.newText}
-                /></div>
-                <div className={styles.subInput}>Body:<input className={styles.input}
-                    ref={newCommentBody}
-                    value={props.newText}
-                /></div>
-                <button className={styles.button} onClick={onAddComment}>Add Comment</button>
-            </div>
-
+               <AddCommentForm onSubmit={onSubmit}/>
             <h1>Comments</h1>
         {props.isFetching ? <Preloader/> : null}
             {props.comments.map(t => <div key={t.id} className={styles.comment}>
@@ -52,6 +35,7 @@ const MyComments = (props) => {
                 <div><span className={styles.bold}>Body: </span> {t.body}</div>
             </div>)}
         </div>
+    </div>
 }
 
 export default MyComments
