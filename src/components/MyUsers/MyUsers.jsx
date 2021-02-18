@@ -1,19 +1,32 @@
 import React from 'react'
 import styles from "../MyPosts/MyPosts.module.css";
 import {Field, reduxForm} from "redux-form";
+import {
+    Input,
+    maxLengthEmail,
+    maxLengthLink, maxLengthName, maxLengthPhone,
+    minLengthEmail,
+    minLengthLink, minLengthName, minLengthPhone
+} from "../../utils/validators/length-validators";
+import {required} from "../../utils/validators/validators";
 
 let AddUserForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
         <div className={styles.subInput}>Name:
-            <Field className={styles.input} name="Name" component="input"/></div>
+            <Field className={styles.input} name="Name"
+                   component={Input} validate={[required, maxLengthName, minLengthName]}/></div>
         <div className={styles.subInput}>User_name:
-            <Field className={styles.input} name="User_name" component="input"/></div>
+            <Field className={styles.input} name="User_name"
+                   component={Input} validate={[required, maxLengthName, minLengthName]}/></div>
         <div className={styles.subInput}>Email:
-            <Field className={styles.input} name="Email" component="input"/></div>
+            <Field className={styles.input} name="Email"
+                   component={Input} validate={[required, maxLengthEmail, minLengthEmail]}/></div>
         <div className={styles.subInput}>Phone:
-            <Field className={styles.input} name="Phone" component="input"/></div>
+            <Field className={styles.input} name="Phone"
+                   component={Input} validate={[required, maxLengthPhone, minLengthPhone]}/></div>
         <div className={styles.subInput}>Website:
-            <Field className={styles.input} name="Website" component="input"/></div>
+            <Field className={styles.input} name="Website"
+                   component={Input} validate={[required, maxLengthLink, minLengthLink]}/></div>
         <button className={styles.button}>Add User</button>
         </form>
 }

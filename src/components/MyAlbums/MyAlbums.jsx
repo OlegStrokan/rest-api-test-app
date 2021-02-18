@@ -2,11 +2,22 @@ import React from 'react'
 import styles from "../MyPosts/MyPosts.module.css";
 import Preloader from "../common/Preloader/Preloader";
 import {Field, reduxForm} from "redux-form";
+import {required} from "../../utils/validators/validators";
+import {
+    Input,
+    maxLengthId,
+    maxLengthTitle,
+    minLengthTitle
+} from "../../utils/validators/length-validators";
 
 let AddAlbumsForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
-        <div className={styles.subInput}>Id:<Field  className={styles.input} name='Albums_Id' component="input"/></div>
-        <div className={styles.subInput}>Title:<Field  className={styles.input} name='Title' component="input"/></div>
+        <div className={styles.subInput}>Id:
+            <Field  className={styles.input} name='Albums_Id'
+                    component={Input}  validate={[required, maxLengthId]}/></div>
+        <div className={styles.subInput}>Title:
+            <Field  className={styles.input} name='Title'
+                    component={Input}  validate={[required, maxLengthTitle, minLengthTitle]}/></div>
         <button className={styles.button}>Add Albums</button>
     </form>
 }

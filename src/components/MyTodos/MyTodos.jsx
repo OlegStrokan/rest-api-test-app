@@ -2,15 +2,26 @@ import React from 'react'
 import styles from "../MyPosts/MyPosts.module.css";
 import Preloader from "../common/Preloader/Preloader";
 import {Field, reduxForm} from "redux-form";
+import {
+    Input,
+    maxLengthCompleted,
+    maxLengthId,
+    maxLengthTitle,
+    minLengthTitle
+} from "../../utils/validators/length-validators";
+import {required} from "../../utils/validators/validators";
 
 let AddTodoForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
         <div className={styles.subInput}>Id:
-            <Field  className={styles.input} name='Todo_Id' component="input"/></div>
+            <Field  className={styles.input} name='Todo_Id'
+                    component={Input} validate={[required, maxLengthId]}/></div>
         <div className={styles.subInput}>Title:
-            <Field  className={styles.input} name='Title' component="input"/></div>
+            <Field  className={styles.input} name='Title'
+                    component={Input}  validate={[required, maxLengthTitle, minLengthTitle]}/></div>
         <div className={styles.subInput}>Completed (0 or 1):
-            <Field  className={styles.input} name='IsComplete' component="input"/></div>
+            <Field  className={styles.input} name='IsComplete'
+                    component={Input}  validate={[required, maxLengthCompleted]}/></div>
         <button className={styles.button}>Add Todo</button>
     </form>
 }

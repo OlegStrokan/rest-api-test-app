@@ -2,13 +2,29 @@ import React from 'react'
 import styles from "../MyPosts/MyPosts.module.css";
 import Preloader from "../common/Preloader/Preloader";
 import {Field, reduxForm} from "redux-form";
+import {
+    Input, maxLengthBody, maxLengthEmail,
+    maxLengthId,
+    maxLengthName,
+    minLengthBody, minLengthEmail,
+    minLengthName
+} from "../../utils/validators/length-validators";
+import {required} from "../../utils/validators/validators";
 
 let AddCommentForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
-        <div className={styles.subInput}>Id:<Field  className={styles.input} name='Comment_id' component="input"/></div>
-        <div className={styles.subInput}>Name:<Field  className={styles.input} name='Name' component="input"/></div>
-        <div className={styles.subInput}>Email: <Field  className={styles.input} name='Email' component="input"/></div>
-        <div className={styles.subInput}>Body: <Field  className={styles.input} name='Body' component="input"/></div>
+        <div className={styles.subInput}>Id:
+            <Field  className={styles.input} name='Comment_id'
+                    component={Input} validate={[required, maxLengthId]}/></div>
+        <div className={styles.subInput}>Name:
+            <Field  className={styles.input} name='Name'
+                    component={Input} validate={[required, maxLengthName, minLengthName]}/></div>
+        <div className={styles.subInput}>Email:
+            <Field  className={styles.input} name='Email'
+                    component={Input} validate={[required, maxLengthEmail, minLengthEmail]}/></div>
+        <div className={styles.subInput}>Body:
+            <Field  className={styles.input} name='Body'
+                    component={Input} validate={[required, maxLengthBody, minLengthBody]}/></div>
         <button className={styles.button}>Add Post</button>
     </form>
 }
